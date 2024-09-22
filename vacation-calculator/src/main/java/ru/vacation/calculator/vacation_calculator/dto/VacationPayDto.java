@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 public class VacationPayDto {
 
     // Средняя зарплата за 12 месяцев
-    private Double averageSalary;
+    private double averageSalary;
 
     // Кол-во дней отпуска
-    private Integer numberVacationDays;
+    private int numberVacationDays;
 }

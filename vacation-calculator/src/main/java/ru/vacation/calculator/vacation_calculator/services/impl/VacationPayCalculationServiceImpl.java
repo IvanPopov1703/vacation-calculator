@@ -2,6 +2,7 @@ package ru.vacation.calculator.vacation_calculator.services.impl;
 
 import org.springframework.stereotype.Service;
 import ru.vacation.calculator.vacation_calculator.dto.VacationPayDto;
+import ru.vacation.calculator.vacation_calculator.exceptions.ValidationException;
 import ru.vacation.calculator.vacation_calculator.services.VacationPayCalculationService;
 
 import java.time.LocalDate;
@@ -24,10 +25,28 @@ public class VacationPayCalculationServiceImpl implements VacationPayCalculation
      */
     @Override
     public Double calculateVacationPay(VacationPayDto vacationPayDto) {
+        // Перед вычислением валидируем входные данные
+        validateVacationPayDto(vacationPayDto);
+
         // Рассчитываем ежедневную зарплату
         double dailySalary = vacationPayDto.getAverageSalary() / AVERAGE_DAYS_IN_MONTH;
         // Рассчитываем сумму отпускных
         return dailySalary * vacationPayDto.getNumberVacationDays();
+    }
+
+    /**
+     * Метод для валидации объекта с входными данными для расчета суммы отпускных
+     *
+     * @param vacationPayDto валидируемый объект
+     */
+    private void validateVacationPayDto(VacationPayDto vacationPayDto) {
+        if (vacationPayDto.getNumberVacationDays() == 0) {
+            throw new ValidationException("Кол-во дней отпуска задано некорректно");
+        }
+
+        if (vacationPayDto.getAverageSalary() == 0) {
+            throw new ValidationException("Средняя зарплата задана некорректно");
+        }
     }
 
 
