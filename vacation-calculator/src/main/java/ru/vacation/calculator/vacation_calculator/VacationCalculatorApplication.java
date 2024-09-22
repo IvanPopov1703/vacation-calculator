@@ -9,9 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @OpenAPIDefinition(
         info = @Info(
-                title = "Расчет заработной платы",
+                title = "Микросервис для расчета заработной платы",
                 version = "1.0.0",
-                description = "API для расчета заработной платы",
+                description = "Содержит API для расчета заработной платы",
                 contact = @Contact(
                         name = "Иван Попов",
                         email = "popov1703.ivan@ya.ru"
