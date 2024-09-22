@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import ru.vacation.calculator.vacation_calculator.dto.VacationPayDto;
 
+import java.math.BigDecimal;
+
 @Tag(name = "VacationPayCalculation", description = "Контроллер для расчета отпускных")
 @RequestMapping("/api/v1")
 public interface VacationPayCalculationControllerApi {
@@ -23,6 +25,6 @@ public interface VacationPayCalculationControllerApi {
             @ApiResponse(responseCode = "500", description = "Ошибка на сервере")
     })
     @PostMapping("/calculate")
-    double calculateVacationPay(@RequestBody VacationPayDto vacationPayDto);
+    BigDecimal calculateVacationPay(@RequestBody VacationPayDto vacationPayDto);
 
 }

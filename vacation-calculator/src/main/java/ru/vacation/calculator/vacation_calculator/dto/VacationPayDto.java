@@ -4,13 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class VacationPayDto {
 
     // Средняя зарплата за 12 месяцев
-    private double averageSalary;
+    private BigDecimal averageSalary;
 
     // Кол-во дней отпуска
     private int numberVacationDays;
