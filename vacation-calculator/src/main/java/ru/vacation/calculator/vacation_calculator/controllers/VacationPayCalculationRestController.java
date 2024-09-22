@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RestController;
 import ru.vacation.calculator.vacation_calculator.dto.VacationPayDto;
 import ru.vacation.calculator.vacation_calculator.services.VacationPayCalculationService;
 
+import java.math.BigDecimal;
+
 @RestController
 @RequiredArgsConstructor
 public class VacationPayCalculationRestController implements VacationPayCalculationControllerApi {
@@ -12,7 +14,7 @@ public class VacationPayCalculationRestController implements VacationPayCalculat
     private final VacationPayCalculationService vacationPayCalculationService;
 
     @Override
-    public double calculateVacationPay(VacationPayDto vacationPayDto) {
+    public BigDecimal calculateVacationPay(VacationPayDto vacationPayDto) {
         return vacationPayCalculationService.calculateVacationPay(vacationPayDto);
     }
 }
